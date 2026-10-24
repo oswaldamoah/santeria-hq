@@ -23,7 +23,7 @@ a{color:inherit;text-decoration:none}img{display:block}
 nav{position:fixed;inset:0 0 auto;z-index:50;background:#000a;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);color:#fff;border-bottom:1px solid #ffffff14}
 nav .w{display:flex;align-items:center;height:62px;gap:clamp(14px,3vw,28px)}
 nav a.l{font-size:14px;color:#ffffffb3;transition:.3s}nav a.l:hover,nav a.on{color:#fff}
-.lg{display:flex;align-items:center;gap:12px;font:800 19px 'Bricolage Grotesque',Inter,system-ui,sans-serif;letter-spacing:-.03em;margin-right:auto}
+.lg{display:flex;align-items:center;gap:12px;font:800 19px 'Bricolage Grotesque',Inter,system-ui,sans-serif;letter-spacing:-.03em;margin-right:auto;white-space:nowrap}
 .mk{position:relative;width:34px;height:34px;border-radius:10px;background:#000 var(--logo) center/cover;flex:none}
 .mk i{position:absolute;left:50%;bottom:-7px;transform:translateX(-50%);font:800 8px/1 Inter,system-ui,sans-serif;font-style:normal;letter-spacing:.1em;padding:3px 6px;border-radius:99px;background:var(--gr);color:#000;border:1.5px solid #000}
 .mk.big{width:84px;height:84px;border-radius:22px;margin-bottom:22px}.mk.big i{font-size:12px;bottom:-11px;padding:5px 10px;border-width:2px}
@@ -81,7 +81,6 @@ h2{font-size:clamp(34px,5.4vw,58px);font-weight:800;text-wrap:balance}
 .note{color:var(--m);margin:-12px 0 24px}
 .tbl{background:#fff;border-radius:var(--r);overflow:hidden}
 /* clients */
-.rs{position:absolute;z-index:4;right:10px;top:38px;font:700 12px Inter,system-ui,sans-serif;padding:6px 11px;border-radius:99px;background:var(--gr);color:#000}
 a.cl{display:block}
 /* cards: inset rounded images */
 .sv{padding:12px}.sv .im{border-radius:20px}.sv .im:after{display:none}.sv .bd{padding:22px 14px 14px}
@@ -120,13 +119,28 @@ a.cl{display:block}
 .sub2{font-size:clamp(28px,4.5vw,44px);font-weight:800;margin:clamp(56px,8vw,96px) 0 26px}
 /* clients */
 .cl{background:#fff;border-radius:var(--r);padding:12px;transition:.5s var(--ease)}.cl:hover{transform:translateY(-7px);box-shadow:0 24px 60px #0000001a}
-.shot{aspect-ratio:16/10;border-radius:18px;overflow:hidden;position:relative;background:linear-gradient(140deg,var(--a),#000)}
-.shot:before{content:'';position:absolute;z-index:2;inset:0 0 auto;height:28px;background:#0d0d0d}
-.shot:after{content:'';position:absolute;z-index:3;left:12px;top:10px;width:8px;height:8px;border-radius:50%;background:#ff5f57;box-shadow:14px 0 #febc2e,28px 0 #28c840}
-.shot img{position:absolute;inset:28px 0 0;width:100%;height:calc(100% - 28px);object-fit:cover;object-position:top center;transition:1s var(--ease)}.cl:hover .shot img{transform:scale(1.06)}
-.in{display:flex;align-items:center;gap:12px;padding:16px 8px 6px}.in b{font:700 18px 'Bricolage Grotesque',Inter,system-ui,sans-serif;letter-spacing:-.02em}
+.inf{display:flex;align-items:center;gap:12px;padding:16px 8px 6px}.inf b{font:700 18px 'Bricolage Grotesque',Inter,system-ui,sans-serif;letter-spacing:-.02em}
 .lo{width:44px;height:44px;border-radius:14px;background:#000;color:var(--y);display:grid;place-items:center;font:800 20px 'Bricolage Grotesque',Inter,system-ui,sans-serif;flex:none;overflow:hidden}.lo img{width:100%;height:100%;object-fit:contain;padding:4px;background:#fff}
-.in em{margin-left:auto;font:500 12px Inter,system-ui,sans-serif;font-style:normal;color:var(--m);text-align:right}
+.inf em{margin-left:auto;font:500 12px Inter,system-ui,sans-serif;font-style:normal;color:var(--m);text-align:right}
+/* client preview */
+.stage{aspect-ratio:4/3;border-radius:20px;overflow:hidden;position:relative;background:radial-gradient(120% 90% at 25% 0%,var(--a),#0b0b0b 85%);cursor:zoom-in;isolation:isolate}
+.stage img{position:absolute;left:14px;top:14px;width:calc(100% - 28px);height:calc(100% - 28px);max-width:none;object-fit:cover;object-position:top center;border-radius:12px;box-shadow:0 30px 60px #0009,0 0 0 1px #ffffff26;transition:.8s var(--ease)}
+.cl{cursor:pointer}.cl:hover .stage img{transform:scale(1.03)}@media(max-width:640px){.stage img:not(.bg){left:9px;top:9px;width:calc(100% - 18px);height:calc(100% - 18px);border-radius:10px}}
+.pv{position:absolute;right:12px;bottom:12px;z-index:3;font:600 12px Inter,system-ui,sans-serif;padding:8px 14px;border-radius:99px;background:#fff;color:#000;opacity:0;transform:translateY(6px);transition:.4s var(--ease)}
+.cl:hover .pv,.cl:focus-visible .pv{opacity:1;transform:none}
+@media(hover:none){.pv{opacity:1;transform:none}}
+.stage:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#0000 35%,#000b);pointer-events:none}
+.stage img{z-index:2}.stage .pv,.stage .rs{z-index:4}
+.cl .stage img.bg{left:-25%;top:-25%;width:150%;height:150%;border-radius:0;box-shadow:none;object-fit:cover;filter:blur(36px) saturate(1.7) brightness(.95);z-index:0;transform:none}.cl:hover .stage img.bg{transform:none}
+.rs{position:absolute;z-index:3;left:12px;top:12px;font:700 12px Inter,system-ui,sans-serif;padding:6px 12px;border-radius:99px;background:var(--gr);color:#000}
+.lb{position:fixed;inset:0;z-index:110;background:#000d;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:.4s}.lb.on{opacity:1;pointer-events:auto}
+.lbx{position:relative;background:#111;color:#fff;width:min(100%,920px);max-height:94svh;border-radius:28px;overflow:hidden;display:flex;flex-direction:column;border:1px solid #ffffff1a;transform:scale(.96);transition:.5s var(--ease)}.lb.on .lbx{transform:none}
+.lbx .x{z-index:4;background:#000a}
+.lbi{overflow:auto;flex:1;min-height:0;background:#0a0a0a}.lbi img{width:100%;height:auto}
+.lbf{display:flex;align-items:center;gap:14px;padding:16px 20px;flex-wrap:wrap;border-top:1px solid #ffffff14}
+.lbf>div:nth-child(2){flex:1;min-width:140px}.lbf b{display:block;font:700 18px 'Bricolage Grotesque',Inter,system-ui,sans-serif;letter-spacing:-.02em}.lbf span{font-size:13px;color:#ffffff90}
+.lba{display:flex;gap:8px;flex-wrap:wrap}.lba .b{padding:11px 18px;font-size:14px}
+.ar{position:absolute;top:40%;z-index:4;width:44px;height:44px;border-radius:50%;border:0;background:#000a;color:#fff;font-size:26px;line-height:1;cursor:pointer}.ar.l{left:12px}.ar.r{right:12px}
 /* footer */
 footer{background:#000;color:#fff;padding:72px 0 28px}
 .fg{display:grid;gap:40px;grid-template-columns:1.6fr 1fr 1fr}
@@ -145,12 +159,12 @@ footer a:not(.b){display:block;color:#ffffffc0;font-size:15px;padding:5px 0;tran
 [data-p]{animation:pg .7s var(--ease)}
 @keyframes rise{from{transform:translateY(45%);opacity:0}}@keyframes pl{50%{transform:scale(1.06);opacity:.88}}@keyframes sp{to{transform:rotate(360deg)}}@keyframes bk{50%{opacity:0}}@keyframes mq{to{transform:translateX(-50%)}}@keyframes pg{from{opacity:0;transform:translateY(14px)}}
 @media(max-width:760px){.fg{grid-template-columns:1fr 1fr}.fg>div:first-child{grid-column:1/-1}}
-@media(max-width:640px){.hm{display:none}.ask{padding-left:18px}.ask .b{padding:11px 16px}.hero{padding-bottom:100px}.pr{font-size:48px}.st>div{padding:18px 12px}.in b{font-size:16px}}
+@media(max-width:640px){.hm{display:none}.ask{padding-left:18px}.ask .b{padding:11px 16px}.hero{padding-bottom:100px}.pr{font-size:48px}.st>div{padding:18px 12px}.inf b{font-size:16px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 </style></head><body>
 <nav><div class="w">
 <a class="lg" href="/" data-r=""><span class="mk"><i>HQ</i></span>Santeria HQ</a>
-<a class="l" href="/clients" data-r="clients">Clients</a><a class="l" href="/pricing" data-r="pricing">Pricing</a>
+<a class="l" href="/clients" data-r="clients">Clients</a>
 <a class="b p" href="#" data-s="">Start<span class="hm">&nbsp;a project</span></a>
 </div></nav>
 
@@ -221,15 +235,19 @@ footer a:not(.b){display:block;color:#ffffffc0;font-size:15px;padding:5px 0;tran
 <input id="nm" placeholder="Your name" autocomplete="name"><textarea id="nt" rows="3" placeholder="Anything we should know? (optional)"></textarea>
 <a class="b p" id="snd" style="width:100%">Send by email</a></div></div>
 
+<div class="lb" id="lb"><div class="lbx"><button class="x" data-lbx aria-label="Close">&times;</button><button class="ar l" data-lb="-1" aria-label="Previous">&lsaquo;</button><button class="ar r" data-lb="1" aria-label="Next">&rsaquo;</button>
+<div class="lbi"><img id="lbimg" alt=""></div>
+<div class="lbf"><div class="lo" id="lblo"></div><div><b id="lbn"></b><span id="lbc"></span></div><div class="lba"><a class="b gh" id="lbv" target="_blank" rel="noopener" hidden>Visit site</a><a class="b p" href="#" data-s="">Start a project</a></div></div></div></div>
+
 <script type="application/json" id="clients">
-{"help":"EDIT ME. One object per client. Screenshots go in the clients/screenshots folder and logos in clients/logo, next to index.html. Use the file name only after the folder, like /clients/logo/mtn.jpg. Leave a field as an empty string to skip it. link makes the card clickable. result is the small orange badge, e.g. +40% orders. Keep the quotes and commas exactly as they are.",
+{"help":"EDIT ME. One object per client. Screenshots go in clients/screenshots and logos in clients/logo, next to index.html. Use the path like clients/logo/mtn.png. The card colour is picked automatically from the screenshot. color is optional and only used when a client has no screenshot yet. Leave a field as an empty string to skip it. link adds a Visit site button. result is the small orange badge, e.g. +40% orders. Keep the quotes and commas exactly as they are.",
 "clients":[
-{"name": "Mindful Circle", "category": "Events, Merch & Donations", "screenshot": "/clients/screenshots/mindfulcircle.png", "logo": "", "color": "#ff9a1f", "result": "", "link": ""},
-{"name": "MTN", "category": "Internet Fibre Network Design", "screenshot": "/clients/screenshots/mtn.png", "logo": "/clients/logo/mtn.png", "color": "#3b82f6", "result": "", "link": ""},
-{"name": "Ministry of Sports & Recreation, Ghana", "category": "Registry Management", "screenshot": "/clients/screenshots/mosr.png", "logo": "/clients/logo/mosr.png", "color": "#10b981", "result": "", "link": ""},
-{"name": "OmanyeAba Rentals", "category": "Booking Automation", "screenshot": "/clients/screenshots/omanyeaba.png", "logo": "/clients/logo/omanyeaba.png", "color": "#8b5cf6", "result": "", "link": ""},
-{"name": "Homz&Kidz Store", "category": "E-commerce", "screenshot": "/clients/screenshots/homzandkidz.png", "logo": "", "color": "#f97316", "result": "", "link": ""},
-{"name": "Haddy&Me Store", "category": "Pre-order Automation", "screenshot": "/clients/screenshots/haddyandme.png", "logo": "/clients/logo/haddyandme.png", "color": "#f43f5e", "result": "", "link": ""}
+{"name": "Mindful Circle", "category": "Events, Merch & Donations", "screenshot": "clients/screenshots/mindfulcircle.png", "logo": "clients/logo/mindfulcircle.png", "color": "", "result": "", "link": ""},
+{"name": "MTN", "category": "Internet Fibre Network Design", "screenshot": "clients/screenshots/mtn.png", "logo": "clients/logo/mtn.png", "color": "", "result": "", "link": ""},
+{"name": "Ministry of Sports & Recreation, Ghana", "category": "Registry Management", "screenshot": "clients/screenshots/mosr.png", "logo": "clients/logo/mosr.png", "color": "", "result": "", "link": ""},
+{"name": "OmanyeAba Rentals", "category": "Booking Automation", "screenshot": "clients/screenshots/omanyeaba.png", "logo": "clients/logo/omanyeaba.png", "color": "", "result": "", "link": ""},
+{"name": "Homz&Kidz Store", "category": "E-commerce", "screenshot": "clients/screenshots/homzandkidz.png", "logo": "clients/logo/homzandkidz.png", "color": "", "result": "", "link": ""},
+{"name": "Haddy&Me Store", "category": "Pre-order Automation", "screenshot": "clients/screenshots/haddyandme.png", "logo": "clients/logo/haddyandme.png", "color": "", "result": "", "link": ""}
 ]}
 </script>
 <script type="application/json" id="pricing">
@@ -279,16 +297,23 @@ function show(){const p=cur();$$('[data-p]').forEach(s=>s.hidden=s.dataset.p!==p
 function go(p){if(location.protocol==='file:')location.hash='#/'+p;else{history.pushState(0,'','/'+p);show()}}
 addEventListener('popstate',show);addEventListener('hashchange',show);show();
 // project sheet
-const sh=$('#sh');let pk='';
-function openS(s,p){pk=p||'';$$('#ch button').forEach(b=>b.classList.toggle('on',!!s&&b.dataset.v===s));sh.classList.add('on');document.body.style.overflow='hidden'}
+const sh=$('#sh'),lb=$('#lb');let pk='',CL=[],li=0;
+function openS(s,p){closeLb();pk=p||'';$$('#ch button').forEach(b=>b.classList.toggle('on',!!s&&b.dataset.v===s));sh.classList.add('on');document.body.style.overflow='hidden'}
 function closeS(){sh.classList.remove('on');document.body.style.overflow=''}
+function openLb(i){li=(i+CL.length)%CL.length;const c=CL[li],im=$('#lbimg');im.hidden=!c.screenshot;im.onerror=()=>{im.hidden=true};im.src=fx(c.screenshot||'');im.alt=c.name||'';$('.lbi').scrollTop=0;$('#lbn').textContent=c.name||'';$('#lbc').textContent=c.category||'';
+const lo=$('#lblo');lo.textContent='';if(c.logo){const g=new Image();g.alt='';g.onerror=()=>{lo.textContent=(c.name||'?')[0]};g.src=fx(c.logo);lo.append(g)}else lo.textContent=(c.name||'?')[0];
+const v=$('#lbv');v.hidden=!c.link;if(c.link)v.href=c.link;lb.classList.add('on');document.body.style.overflow='hidden'}
+function closeLb(){lb.classList.remove('on');if(!sh.classList.contains('on'))document.body.style.overflow=''}
 document.addEventListener('click',e=>{
+const k=e.target.closest('.cl[data-i]');if(k){openLb(+k.dataset.i);return}
+const a=e.target.closest('[data-lb]');if(a){openLb(li+ +a.dataset.lb);return}
+if(e.target===lb||e.target.closest('[data-lbx]')){closeLb();return}
 const r=e.target.closest('[data-r]');if(r){e.preventDefault();go(r.dataset.r);return}
 const f=e.target.closest('[data-pdf]');if(f){e.preventDefault();pdf();return}
 const s=e.target.closest('[data-s]');if(s){e.preventDefault();openS(s.dataset.s,s.dataset.pk);return}
 if(e.target===sh||e.target.closest('.x'))closeS();
 const c=e.target.closest('#ch button');if(c)c.classList.toggle('on')});
-addEventListener('keydown',e=>e.key==='Escape'&&closeS());
+addEventListener('keydown',e=>{if(e.key==='Escape'){closeS();closeLb()}else if(lb.classList.contains('on')&&(e.key==='ArrowRight'||e.key==='ArrowLeft'))openLb(li+(e.key==='ArrowRight'?1:-1));else if(e.key==='Enter'&&e.target.matches&&e.target.matches('.cl[data-i]'))openLb(+e.target.dataset.i)});
 $('#snd').onclick=()=>{const v=$$('#ch .on').map(b=>b.dataset.v).join(', ')||'Not sure yet',n=$('#nm').value.trim(),t=$('#nt').value.trim();
 const body=`Hi Santeria HQ,\n\nI need: ${v}${pk?'\nPackage: '+pk:''}${t?'\n\n'+t:''}\n\n${n}`;
 location.href='mailto:'+E+'?subject='+encodeURIComponent('Project enquiry'+(n?' from '+n:''))+'&body='+encodeURIComponent(body)};
@@ -304,8 +329,8 @@ try{rp(JSON.parse($('#pricing').textContent))}catch(e){console.error('pricing JS
 // optional: drop a pricing.json next to index.html (same format) and it replaces the list above
 fetch('pricing.json').then(r=>r.ok?r.json():null).then(j=>j&&j.bundles&&rp(j,1)).catch(()=>{});
 const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
-const fx=u=>u?u.replace('//www.dropbox.com','//dl.dropboxusercontent.com'):'';
-function rc(L,late){$('#cg').innerHTML=L.map((c,i)=>{const t=c.link?`a href="${esc(c.link)}" target="_blank" rel="noopener"`:'article',l=(c.name||'?')[0];return `<${t} class="cl rv" style="--d:${i%3};--a:${esc(c.color||'#ff6a00')}"><div class="shot">${c.result?`<span class="rs">${esc(c.result)}</span>`:''}${c.screenshot?`<img loading="lazy" referrerpolicy="no-referrer" alt="${esc(c.name)}" src="${esc(fx(c.screenshot))}" onerror="this.remove()">`:''}</div><div class="in"><div class="lo">${c.logo?`<img referrerpolicy="no-referrer" alt="" data-l="${esc(l)}" src="${esc(fx(c.logo))}" onerror="this.replaceWith(this.dataset.l)">`:esc(l)}</div><b>${esc(c.name)}</b><em>${esc(c.category)}</em></div></${t.split(' ')[0]}>`}).join('');if(late)$$('#cg .rv').forEach(el=>ob.observe(el))}
+const fx=u=>{if(!u)return '';if(/^(https?:|data:|\/\/)/.test(u))return u.replace('//www.dropbox.com','//dl.dropboxusercontent.com');u=u.replace(/^\//,'');return location.protocol==='file:'?u:'/'+u};
+function rc(L,late){CL=L;$('#cg').innerHTML=L.map((c,i)=>{const l=(c.name||'?')[0];return `<article class="cl rv" data-i="${i}" tabindex="0" role="button" aria-label="Preview ${esc(c.name)}" style="--d:${i%3};--a:${esc(c.color||'#ff6a00')}"><div class="stage">${c.result?`<span class="rs">${esc(c.result)}</span>`:''}${c.screenshot?`<img class="bg" aria-hidden="true" alt="" src="${esc(fx(c.screenshot))}" onerror="this.remove()">`:''}${c.screenshot?`<img loading="lazy" referrerpolicy="no-referrer" alt="${esc(c.name)}" src="${esc(fx(c.screenshot))}" onerror="console.warn('Image not found:',this.src);this.remove()">`:''}<span class="pv">Preview</span></div><div class="inf"><div class="lo">${c.logo?`<img referrerpolicy="no-referrer" alt="" data-l="${esc(l)}" src="${esc(fx(c.logo))}" onerror="console.warn('Logo not found:',this.src);this.replaceWith(this.dataset.l)">`:esc(l)}</div><b>${esc(c.name)}</b><em>${esc(c.category)}</em></div></article>`}).join('');if(late)$$('#cg .rv').forEach(el=>ob.observe(el))}
 try{rc(JSON.parse($('#clients').textContent).clients)}catch(e){console.error('clients JSON error',e);$('#cg').innerHTML='<p class="note">The clients list has a typo. Check the commas and quotes in the clients JSON.</p>'}
 // optional: drop a clients.json next to index.html (same format) and it replaces the list above
 fetch('clients.json').then(r=>r.ok?r.json():null).then(j=>j&&rc(j.clients||j,1)).catch(()=>{});
