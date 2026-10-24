@@ -123,9 +123,9 @@ a.cl{display:block}
 .shot{aspect-ratio:16/10;border-radius:18px;overflow:hidden;position:relative;background:linear-gradient(140deg,var(--a),#000)}
 .shot:before{content:'';position:absolute;z-index:2;inset:0 0 auto;height:28px;background:#0d0d0d}
 .shot:after{content:'';position:absolute;z-index:3;left:12px;top:10px;width:8px;height:8px;border-radius:50%;background:#ff5f57;box-shadow:14px 0 #febc2e,28px 0 #28c840}
-.shot img{position:absolute;inset:28px 0 0;width:100%;height:calc(100% - 28px);object-fit:cover;transition:1s var(--ease)}.cl:hover .shot img{transform:scale(1.06)}
+.shot img{position:absolute;inset:28px 0 0;width:100%;height:calc(100% - 28px);object-fit:cover;object-position:top center;transition:1s var(--ease)}.cl:hover .shot img{transform:scale(1.06)}
 .in{display:flex;align-items:center;gap:12px;padding:16px 8px 6px}.in b{font:700 18px 'Bricolage Grotesque',Inter,system-ui,sans-serif;letter-spacing:-.02em}
-.lo{width:44px;height:44px;border-radius:14px;background:#000;color:var(--y);display:grid;place-items:center;font:800 20px 'Bricolage Grotesque',Inter,system-ui,sans-serif;flex:none;overflow:hidden}.lo img{width:100%;height:100%;object-fit:cover}
+.lo{width:44px;height:44px;border-radius:14px;background:#000;color:var(--y);display:grid;place-items:center;font:800 20px 'Bricolage Grotesque',Inter,system-ui,sans-serif;flex:none;overflow:hidden}.lo img{width:100%;height:100%;object-fit:contain;padding:4px;background:#fff}
 .in em{margin-left:auto;font:500 12px Inter,system-ui,sans-serif;font-style:normal;color:var(--m);text-align:right}
 /* footer */
 footer{background:#000;color:#fff;padding:72px 0 28px}
@@ -222,14 +222,14 @@ footer a:not(.b){display:block;color:#ffffffc0;font-size:15px;padding:5px 0;tran
 <a class="b p" id="snd" style="width:100%">Send by email</a></div></div>
 
 <script type="application/json" id="clients">
-{"help":"EDIT ME. One object per client. screenshot and logo: a full URL or a path like /work/shot1.png. Leave any field as an empty string to skip it. link makes the card clickable. result is the small orange badge.",
+{"help":"EDIT ME. One object per client. Screenshots go in the clients/screenshots folder and logos in clients/logo, next to index.html. Use the file name only after the folder, like /clients/logo/mtn.jpg. Leave a field as an empty string to skip it. link makes the card clickable. result is the small orange badge, e.g. +40% orders. Keep the quotes and commas exactly as they are.",
 "clients":[
-{"name":"Mindful Circle","category":"Events, Merch & Donations","screenshot":"https://www.dropbox.com/scl/fi/du22bxf6rzjp9jvcc43xr/mindfulcircle.png?rlkey=rxusvb5dy3720acv6j602gy1r&st=xqefi3kx&raw=1","logo":"","color":"#ff9a1f","result":"+40% orders","link":""},
-{"name":"MTN","category":"Internet Fibre Network Design","screenshot":"https://www.dropbox.com/scl/fi/cvotkb89fnm766qju2xdt/mtn.png?rlkey=5es9zn9g2lu0jbaig8lx32cpu&st=vrbnaqhh&raw=1","logo":"https://www.dropbox.com/scl/fi/mwehughxcqgabvq2qlob8/mtn.jpg?rlkey=bvpdao8r083igaa62mm8i85pv&st=0s2v7vzu&raw=1","color":"#3b82f6","result":"3x faster dispatch","link":""},
-{"name":"Ministry of Sports & Recreation, Ghana","category":"Registry Management","screenshot":"https://images.pexels.com/photos/3184361/pexels-photo-3184361.jpeg?auto=compress&cs=tinysrgb&w=800","logo":"src="https://www.dropbox.com/scl/fi/5novujra156nd9bz4l6ja/mosr.png?rlkey=vhh0gvwvd5pvzeo98qpvs1acx&st=f0htc9co&raw=1"","color":"#10b981","result":"120 bookings in month 1","link":""},
-{"name":"OmanyeAba Rentals","category":"Booking Automation","screenshot":"https://www.dropbox.com/scl/fi/gho1e9wadfdf3vr5wkntp/omanyeaba.png?rlkey=w2rc1xs8ilrnwwapqky94c7yp&st=z66wyudb&raw=1","logo":"https://www.dropbox.com/scl/fi/r1aysg8glwkun0uyj3zhw/omanyeaba.png?rlkey=7pvz77kkblojcxntkzwtl44yo&st=j7jwthsm&raw=1","color":"#8b5cf6","result":"15 hrs saved weekly","link":""},
-{"name":"Homz&Kidz Store","category":"E-commerce","screenshot":"https://www.dropbox.com/scl/fi/g1i0uh5vr5s2omug1opve/homzandkidz.png?rlkey=amddnouzdu0uxjlk7kfuu0mml&st=8rvxu7zs&raw=1","logo":"https://www.dropbox.com/scl/fi/gho1e9wadfdf3vr5wkntp/omanyeaba.png?rlkey=w2rc1xs8ilrnwwapqky94c7yp&st=z66wyudb&raw=1","color":"#f97316","result":"Fully booked weekend","link":""},
-{"name":"Haddy&Me Store","category":"Pre-order Automation","screenshot":"https://www.dropbox.com/scl/fi/p962c9z0vf2275eg81y9w/haddyandme.png?rlkey=9jrk5eja8kerckn8hktmpvwyv&st=xbcon3nw&raw=1","logo":"https://www.dropbox.com/scl/fi/r236dna6n5r5otre8yy69/haddyandme.png?rlkey=36xb77yjs3eyl8z3x9iw826hl&st=vy349omq&raw=1","color":"#f43f5e","result":"","link":""}
+{"name": "Mindful Circle", "category": "Events, Merch & Donations", "screenshot": "/clients/screenshots/mindfulcircle.png", "logo": "", "color": "#ff9a1f", "result": "", "link": ""},
+{"name": "MTN", "category": "Internet Fibre Network Design", "screenshot": "/clients/screenshots/mtn.png", "logo": "/clients/logo/mtn.png", "color": "#3b82f6", "result": "", "link": ""},
+{"name": "Ministry of Sports & Recreation, Ghana", "category": "Registry Management", "screenshot": "/clients/screenshots/mosr.png", "logo": "/clients/logo/mosr.png", "color": "#10b981", "result": "", "link": ""},
+{"name": "OmanyeAba Rentals", "category": "Booking Automation", "screenshot": "/clients/screenshots/omanyeaba.png", "logo": "/clients/logo/omanyeaba.png", "color": "#8b5cf6", "result": "", "link": ""},
+{"name": "Homz&Kidz Store", "category": "E-commerce", "screenshot": "/clients/screenshots/homzandkidz.png", "logo": "", "color": "#f97316", "result": "", "link": ""},
+{"name": "Haddy&Me Store", "category": "Pre-order Automation", "screenshot": "/clients/screenshots/haddyandme.png", "logo": "/clients/logo/haddyandme.png", "color": "#f43f5e", "result": "", "link": ""}
 ]}
 </script>
 <script type="application/json" id="pricing">
@@ -300,11 +300,13 @@ let PR;
 function rp(P,late){PR=P;$('#pk').innerHTML=P.bundles.map((k,i)=>`<article class="pk${k.hot?' hot':''} rv" style="--d:${i}">${k.hot?'<em>Most picked</em>':''}<h3>${k.name}</h3><small>${k.tag}</small><div class="pr">${$$$(k.price)}${k.was?`<s>${$$$(k.was)}</s>`:''}${k.monthly?'<sub>/mo</sub>':''}</div><div class="sa">${k.was?'You save '+$$$(k.was-k.price):k.monthly?'Cancel anytime':''}</div><ul>${k.items.map(x=>`<li>${x}</li>`).join('')}</ul><a class="b ${k.hot?'p':'dk'}" href="#" data-s="${k.chip||'Bundle'}" data-pk="${k.name} (${$$$(k.price)}${k.monthly?'/mo':''})">${k.button||'Get started'}</a></article>`).join('');
 let chip='';$('#tb').innerHTML=P.rates.map(r=>r.group?(chip=r.chip||'',`<tr class="gp"><td colspan="2">${r.group}</td></tr>`):`<tr data-s="${chip}" data-pk="${r.service} (${r.charge})"><td>${r.service}</td><td>${r.charge}</td></tr>`).join('');
 if(late)$$('#pk .rv').forEach(el=>ob.observe(el))}
-rp(JSON.parse($('#pricing').textContent));
+try{rp(JSON.parse($('#pricing').textContent))}catch(e){console.error('pricing JSON error',e)}
 // optional: drop a pricing.json next to index.html (same format) and it replaces the list above
 fetch('pricing.json').then(r=>r.ok?r.json():null).then(j=>j&&j.bundles&&rp(j,1)).catch(()=>{});
-function rc(L,late){$('#cg').innerHTML=L.map((c,i)=>{const t=c.link?`a href="${c.link}" target="_blank" rel="noopener"`:'article';return `<${t} class="cl rv" style="--d:${i%3};--a:${c.color||'#ff6a00'}"><div class="shot">${c.result?`<span class="rs">${c.result}</span>`:''}${c.screenshot?`<img loading="lazy" alt="${c.name}" src="${c.screenshot}" onerror="this.remove()">`:''}</div><div class="in"><div class="lo">${c.logo?`<img alt="" src="${c.logo}" onerror="this.remove()">`:''}${c.name[0]}</div><b>${c.name}</b><em>${c.category||''}</em></div></${t.split(' ')[0]}>`}).join('');if(late)$$('#cg .rv').forEach(el=>ob.observe(el))}
-rc(JSON.parse($('#clients').textContent).clients);
+const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
+const fx=u=>u?u.replace('//www.dropbox.com','//dl.dropboxusercontent.com'):'';
+function rc(L,late){$('#cg').innerHTML=L.map((c,i)=>{const t=c.link?`a href="${esc(c.link)}" target="_blank" rel="noopener"`:'article',l=(c.name||'?')[0];return `<${t} class="cl rv" style="--d:${i%3};--a:${esc(c.color||'#ff6a00')}"><div class="shot">${c.result?`<span class="rs">${esc(c.result)}</span>`:''}${c.screenshot?`<img loading="lazy" referrerpolicy="no-referrer" alt="${esc(c.name)}" src="${esc(fx(c.screenshot))}" onerror="this.remove()">`:''}</div><div class="in"><div class="lo">${c.logo?`<img referrerpolicy="no-referrer" alt="" data-l="${esc(l)}" src="${esc(fx(c.logo))}" onerror="this.replaceWith(this.dataset.l)">`:esc(l)}</div><b>${esc(c.name)}</b><em>${esc(c.category)}</em></div></${t.split(' ')[0]}>`}).join('');if(late)$$('#cg .rv').forEach(el=>ob.observe(el))}
+try{rc(JSON.parse($('#clients').textContent).clients)}catch(e){console.error('clients JSON error',e);$('#cg').innerHTML='<p class="note">The clients list has a typo. Check the commas and quotes in the clients JSON.</p>'}
 // optional: drop a clients.json next to index.html (same format) and it replaces the list above
 fetch('clients.json').then(r=>r.ok?r.json():null).then(j=>j&&rc(j.clients||j,1)).catch(()=>{});
 const m=['Flyers','Branding','Websites','Mobile apps','AI automations','Dedicated teams','Ad campaigns','Web apps'].map(x=>`<span>${x}</span>`).join('');$('#mq').innerHTML=m+m;
